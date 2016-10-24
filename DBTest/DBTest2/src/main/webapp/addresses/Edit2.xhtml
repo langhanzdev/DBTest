@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAddressesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAddressesLabel_idAddress}" for="idAddress" />
+                    <h:inputText id="idAddress" value="#{addressesController.selected.idAddress}" title="#{bundle.EditAddressesTitle_idAddress}" required="true" requiredMessage="#{bundle.EditAddressesRequiredMessage_idAddress}"/>
+                    <h:outputLabel value="#{bundle.EditAddressesLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{addressesController.selected.address}" title="#{bundle.EditAddressesTitle_address}" required="true" requiredMessage="#{bundle.EditAddressesRequiredMessage_address}"/>
+                    <h:outputLabel value="#{bundle.EditAddressesLabel_latitude}" for="latitude" />
+                    <h:inputText id="latitude" value="#{addressesController.selected.latitude}" title="#{bundle.EditAddressesTitle_latitude}" />
+                    <h:outputLabel value="#{bundle.EditAddressesLabel_longitude}" for="longitude" />
+                    <h:inputText id="longitude" value="#{addressesController.selected.longitude}" title="#{bundle.EditAddressesTitle_longitude}" />
+                    <h:outputLabel value="#{bundle.EditAddressesLabel_descriptionLocation}" for="descriptionLocation" />
+                    <h:inputText id="descriptionLocation" value="#{addressesController.selected.descriptionLocation}" title="#{bundle.EditAddressesTitle_descriptionLocation}" />
+                </h:panelGrid>
+                <h:commandLink action="#{addressesController.update}" value="#{bundle.EditAddressesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAddressesViewLink}"/>
+                <br />
+                <h:commandLink action="#{addressesController.prepareList}" value="#{bundle.EditAddressesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAddressesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:outputText value="#{bundle.ListScsTitle}"></h:outputText>
+                
+                <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListScsEmpty}" rendered="#{scsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{scsController.items.rowCount > 0}">
+                    <h:outputText value="#{scsController.pagination.pageFirstItem + 1}..#{scsController.pagination.pageLastItem + 1}/#{scsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{scsController.previous}" value="#{bundle.Previous} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{scsController.next}" value="#{bundle.Next} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{scsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListScsTitle_idSegmentController}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSegmentController}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListScsTitle_ipSegmentController}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ipSegmentController}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListScsTitle_idAddress}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAddress}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{scsController.prepareView}" value="#{bundle.ListScsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{scsController.prepareEdit}" value="#{bundle.ListScsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{scsController.destroy}" value="#{bundle.ListScsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{scsController.prepareCreate}" value="#{bundle.ListScsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListScsIndexLink}"/>
+            </h:form>
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditScsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditScsLabel_idSegmentController}" for="idSegmentController" />
+                    <h:inputText id="idSegmentController" value="#{scsController.selected.idSegmentController}" title="#{bundle.EditScsTitle_idSegmentController}" required="true" requiredMessage="#{bundle.EditScsRequiredMessage_idSegmentController}"/>
+                    <h:outputLabel value="#{bundle.EditScsLabel_ipSegmentController}" for="ipSegmentController" />
+                    <h:inputText id="ipSegmentController" value="#{scsController.selected.ipSegmentController}" title="#{bundle.EditScsTitle_ipSegmentController}" />
+                    <h:outputLabel value="#{bundle.EditScsLabel_idAddress}" for="idAddress" />
+                    <h:selectOneMenu id="idAddress" value="#{scsController.selected.idAddress}" title="#{bundle.EditScsTitle_idAddress}" required="true" requiredMessage="#{bundle.EditScsRequiredMessage_idAddress}">
+                        <f:selectItems value="#{addressesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{scsController.update}" value="#{bundle.EditScsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditScsViewLink}"/>
+                <br />
+                <h:commandLink action="#{scsController.prepareList}" value="#{bundle.EditScsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditScsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

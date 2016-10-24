@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCommandHistTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCommandHistEmpty}" rendered="#{commandHistController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{commandHistController.items.rowCount > 0}">
+                    <h:outputText value="#{commandHistController.pagination.pageFirstItem + 1}..#{commandHistController.pagination.pageLastItem + 1}/#{commandHistController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{commandHistController.previous}" value="#{bundle.Previous} #{commandHistController.pagination.pageSize}" rendered="#{commandHistController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{commandHistController.next}" value="#{bundle.Next} #{commandHistController.pagination.pageSize}" rendered="#{commandHistController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{commandHistController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_idCommandHist}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCommandHist}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_category}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.category}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_value}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.value}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_message}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.message}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_dateTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_lpc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lpc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommandHistTitle_sc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{commandHistController.prepareView}" value="#{bundle.ListCommandHistViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{commandHistController.prepareEdit}" value="#{bundle.ListCommandHistEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{commandHistController.destroy}" value="#{bundle.ListCommandHistDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{commandHistController.prepareCreate}" value="#{bundle.ListCommandHistCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCommandHistIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
