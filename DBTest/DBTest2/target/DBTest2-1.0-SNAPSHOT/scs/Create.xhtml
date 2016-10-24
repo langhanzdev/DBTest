@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -14,30 +15,33 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:outputText value="#{bundle.CreateScsTitle}"></h:outputText>
+                <h1 style="color: #585858;">#{bundle.CreateScsTitle}</h1>
                 <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateScsLabel_idSegmentController}" for="idSegmentController" />
-                    <h:inputText id="idSegmentController" value="#{scsController.selected.idSegmentController}" title="#{bundle.CreateScsTitle_idSegmentController}" required="true" requiredMessage="#{bundle.CreateScsRequiredMessage_idSegmentController}"/>
-                    <h:outputLabel value="#{bundle.CreateScsLabel_ipSegmentController}" for="ipSegmentController" />
-                    <h:inputText id="ipSegmentController" value="#{scsController.selected.ipSegmentController}" title="#{bundle.CreateScsTitle_ipSegmentController}" />
-                    <h:outputLabel value="#{bundle.CreateScsLabel_idAddress}" for="idAddress" />
-                    <h:selectOneMenu id="idAddress" value="#{scsController.selected.idAddress}" title="#{bundle.CreateScsTitle_idAddress}" required="true" requiredMessage="#{bundle.CreateScsRequiredMessage_idAddress}">
-                        <f:selectItems value="#{addressesController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{scsController.create}" value="#{bundle.CreateScsSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{scsController.prepareList}" value="#{bundle.CreateScsShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateScsIndexLink}"/>
-            </h:form>
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.CreateScsLabel_idSegmentController}" for="idSegmentController" />
+                        <p:inputText id="idSegmentController" value="#{scsController.selected.idSegmentController}" title="#{bundle.CreateScsTitle_idSegmentController}" required="true" requiredMessage="#{bundle.CreateScsRequiredMessage_idSegmentController}"/>
+                        <p:outputLabel value="#{bundle.CreateScsLabel_ipSegmentController}" for="ipSegmentController" />
+                        <p:inputText id="ipSegmentController" value="#{scsController.selected.ipSegmentController}" title="#{bundle.CreateScsTitle_ipSegmentController}" />
+                        <p:outputLabel value="#{bundle.CreateScsLabel_idAddress}" for="idAddress" />
+                        <p:selectOneMenu id="idAddress" value="#{scsController.selected.idAddress}" required="true" requiredMessage="#{bundle.CreateScsRequiredMessage_idAddress}">
+                            <f:selectItems value="#{addressesController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{scsController.create}" value="#{bundle.CreateScsSaveLink}" />
+                    <!--<h:commandLink action="# {scsController.create}" value="# {bundle.CreateScsSaveLink}" />-->
+                    <br />
+                    <br />
+                    <p:commandButton action="#{scsController.prepareList}" value="#{bundle.CreateScsShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {scsController.prepareList}" value="# {bundle.CreateScsShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.CreateScsIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.CreateScsIndexLink}"/>-->
+                </h:form>
                 
                 
                 

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -14,7 +15,7 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:outputText value="#{bundle.ListScsTitle}"></h:outputText>
+                <h1 style="color: #585858;">#{bundle.ListScsTitle}</h1>
                 
                 <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
@@ -25,42 +26,47 @@
                     <h:outputText value="#{scsController.pagination.pageFirstItem + 1}..#{scsController.pagination.pageLastItem + 1}/#{scsController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{scsController.previous}" value="#{bundle.Previous} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{scsController.next}" value="#{bundle.Next} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{scsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                    <p:dataTable value="#{scsController.items}" var="item"  style="border:solid 1px; width: 80%;">
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListScsTitle_idSegmentController}"/>
                             </f:facet>
                             <h:outputText value="#{item.idSegmentController}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListScsTitle_ipSegmentController}"/>
                             </f:facet>
                             <h:outputText value="#{item.ipSegmentController}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListScsTitle_idAddress}"/>
                             </f:facet>
                             <h:outputText value="#{item.idAddress}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{scsController.prepareView}" value="#{bundle.ListScsViewLink}"/>
+                            <p:commandButton action="#{scsController.prepareView}" value="#{bundle.ListScsViewLink}"/>
+                            <!--<h:commandLink action="# {scsController.prepareView}" value="# {bundle.ListScsViewLink}"/>-->
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{scsController.prepareEdit}" value="#{bundle.ListScsEditLink}"/>
+                            <p:commandButton action="#{scsController.prepareEdit}" value="#{bundle.ListScsEditLink}"/>
+                            <!--<h:commandLink action="# {scsController.prepareEdit}" value="# {bundle.ListScsEditLink}"/>-->
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{scsController.destroy}" value="#{bundle.ListScsDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                            <p:commandButton action="#{scsController.destroy}" value="#{bundle.ListScsDestroyLink}"/>
+                            <!--<h:commandLink action="# {scsController.destroy}" value="# {bundle.ListScsDestroyLink}"/>-->
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{scsController.prepareCreate}" value="#{bundle.ListScsCreateLink}"/>
+                <p:commandButton action="#{scsController.prepareCreate}" value="#{bundle.ListScsCreateLink}"/>
+                <!--<h:commandLink action="# {scsController.prepareCreate}" value="# {bundle.ListScsCreateLink}"/>-->
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListScsIndexLink}"/>
+                <p:commandButton action="/index" value="#{bundle.ListScsIndexLink}"/>
+                <!--<h:link outcome="/index" value="# {bundle.ListScsIndexLink}"/>-->
             </h:form>
                 
                 

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -13,32 +14,37 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:outputText value="#{bundle.ViewScsTitle}"></h:outputText>
+                <h1>#{bundle.ViewScsTitle}</h1>
                 
                 <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputText value="#{bundle.ViewScsLabel_idSegmentController}"/>
-                        <h:outputText value="#{scsController.selected.idSegmentController}" title="#{bundle.ViewScsTitle_idSegmentController}"/>
-                        <h:outputText value="#{bundle.ViewScsLabel_ipSegmentController}"/>
-                        <h:outputText value="#{scsController.selected.ipSegmentController}" title="#{bundle.ViewScsTitle_ipSegmentController}"/>
-                        <h:outputText value="#{bundle.ViewScsLabel_idAddress}"/>
-                        <h:outputText value="#{scsController.selected.idAddress}" title="#{bundle.ViewScsTitle_idAddress}"/>
-                    </h:panelGrid>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.ViewScsLabel_idSegmentController}"/>
+                        <p:outputLabel value="#{scsController.selected.idSegmentController}" title="#{bundle.ViewScsTitle_idSegmentController}"/>
+                        <p:outputLabel value="#{bundle.ViewScsLabel_ipSegmentController}"/>
+                        <p:outputLabel value="#{scsController.selected.ipSegmentController}" title="#{bundle.ViewScsTitle_ipSegmentController}"/>
+                        <p:outputLabel value="#{bundle.ViewScsLabel_idAddress}"/>
+                        <p:outputLabel value="#{scsController.selected.idAddress}" title="#{bundle.ViewScsTitle_idAddress}"/>
+                    </p:panelGrid>
                     <br />
-                    <h:commandLink action="#{scsController.destroyAndView}" value="#{bundle.ViewScsDestroyLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="Edit" value="#{bundle.ViewScsEditLink}"/>
-                    <br />
-                    <h:commandLink action="#{scsController.prepareCreate}" value="#{bundle.ViewScsCreateLink}" />
-                    <br />
-                    <h:commandLink action="#{scsController.prepareList}" value="#{bundle.ViewScsShowAllLink}"/>
+                    <p:commandButton action="#{scsController.destroyAndView}" value="#{bundle.ViewScsDestroyLink}"/>
+                    <!--<h:commandLink action="# {scsController.destroyAndView}" value="# {bundle.ViewScsDestroyLink}"/>-->
                     <br />
                     <br />
-                    <h:link outcome="/index" value="#{bundle.ViewScsIndexLink}"/>
+                    <p:commandButton action="Edit" value="#{bundle.ViewScsEditLink}"/>
+                    <!--<h:link outcome="Edit" value="# {bundle.ViewScsEditLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{scsController.prepareCreate}" value="#{bundle.ViewScsCreateLink}" />
+                    <!--<h:commandLink action="# {scsController.prepareCreate}" value="# {bundle.ViewScsCreateLink}" />-->
+                    <br />
+                    <p:commandButton action="#{scsController.prepareList}" value="#{bundle.ViewScsShowAllLink}"/>
+                    <!--<h:commandLink action="# {scsController.prepareList}" value="# {bundle.ViewScsShowAllLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ViewScsIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewScsIndexLink}"/>-->
 
                 </h:form>
                 

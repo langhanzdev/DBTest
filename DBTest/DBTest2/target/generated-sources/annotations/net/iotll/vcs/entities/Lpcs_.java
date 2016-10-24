@@ -9,7 +9,7 @@ import net.iotll.vcs.entities.CommandHist;
 import net.iotll.vcs.entities.LpcsHist;
 import net.iotll.vcs.entities.Scs;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-21T16:59:13")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-24T13:49:39")
 @StaticMetamodel(Lpcs.class)
 public class Lpcs_ { 
 
