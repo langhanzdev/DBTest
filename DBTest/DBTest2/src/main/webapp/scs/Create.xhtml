@@ -16,13 +16,10 @@
 
             <ui:define name="content">
                 <h1 style="color: #585858;">#{bundle.CreateScsTitle}</h1>
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:form>
-                    <h:panelGrid columns="2">
-                        <p:outputLabel value="#{bundle.CreateScsLabel_idSegmentController}" for="idSegmentController" />
-                        <p:inputText id="idSegmentController" value="#{scsController.selected.idSegmentController}" title="#{bundle.CreateScsTitle_idSegmentController}" required="true" requiredMessage="#{bundle.CreateScsRequiredMessage_idSegmentController}"/>
+                
+                <h:form>                   
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2">                       
                         <p:outputLabel value="#{bundle.CreateScsLabel_ipSegmentController}" for="ipSegmentController" />
                         <p:inputText id="ipSegmentController" value="#{scsController.selected.ipSegmentController}" title="#{bundle.CreateScsTitle_ipSegmentController}" />
                         <p:outputLabel value="#{bundle.CreateScsLabel_idAddress}" for="idAddress" />
@@ -39,7 +36,7 @@
                     <!--<h:commandLink action="# {scsController.prepareList}" value="# {bundle.CreateScsShowAllLink}" immediate="true"/>-->
                     <br />
                     <br />
-                    <p:commandButton action="/index" value="#{bundle.CreateScsIndexLink}"/>
+                    <p:commandButton action="/index" value="#{bundle.CreateScsIndexLink}" immediate="true"/>
                     <!--<h:link outcome="/index" value="# {bundle.CreateScsIndexLink}"/>-->
                 </h:form>
                 

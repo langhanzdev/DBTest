@@ -8,7 +8,7 @@ import net.iotll.vcs.entities.Addresses;
 import net.iotll.vcs.entities.CommandHist;
 import net.iotll.vcs.entities.Lpcs;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-24T13:49:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-25T13:01:44")
 @StaticMetamodel(Scs.class)
 public class Scs_ { 
 

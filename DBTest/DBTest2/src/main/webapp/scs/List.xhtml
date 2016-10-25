@@ -18,56 +18,56 @@
                 <h1 style="color: #585858;">#{bundle.ListScsTitle}</h1>
                 
                 <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListScsEmpty}" rendered="#{scsController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{scsController.items.rowCount > 0}">
-                    <h:outputText value="#{scsController.pagination.pageFirstItem + 1}..#{scsController.pagination.pageLastItem + 1}/#{scsController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{scsController.previous}" value="#{bundle.Previous} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{scsController.next}" value="#{bundle.Next} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasNextPage}"/>&nbsp;
-                    <p:dataTable value="#{scsController.items}" var="item"  style="border:solid 1px; width: 80%;">
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListScsTitle_idSegmentController}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idSegmentController}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListScsTitle_ipSegmentController}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ipSegmentController}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListScsTitle_idAddress}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idAddress}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <p:commandButton action="#{scsController.prepareView}" value="#{bundle.ListScsViewLink}"/>
-                            <!--<h:commandLink action="# {scsController.prepareView}" value="# {bundle.ListScsViewLink}"/>-->
-                            <h:outputText value=" "/>
-                            <p:commandButton action="#{scsController.prepareEdit}" value="#{bundle.ListScsEditLink}"/>
-                            <!--<h:commandLink action="# {scsController.prepareEdit}" value="# {bundle.ListScsEditLink}"/>-->
-                            <h:outputText value=" "/>
-                            <p:commandButton action="#{scsController.destroy}" value="#{bundle.ListScsDestroyLink}"/>
-                            <!--<h:commandLink action="# {scsController.destroy}" value="# {bundle.ListScsDestroyLink}"/>-->
-                        </p:column>
-                    </p:dataTable>
-                </h:panelGroup>
-                <br />
-                <p:commandButton action="#{scsController.prepareCreate}" value="#{bundle.ListScsCreateLink}"/>
-                <!--<h:commandLink action="# {scsController.prepareCreate}" value="# {bundle.ListScsCreateLink}"/>-->
-                <br />
-                <br />
-                <p:commandButton action="/index" value="#{bundle.ListScsIndexLink}"/>
-                <!--<h:link outcome="/index" value="# {bundle.ListScsIndexLink}"/>-->
-            </h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                
+                    <h:outputText escape="false" value="#{bundle.ListScsEmpty}" rendered="#{scsController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{scsController.items.rowCount > 0}">
+
+                        <h:outputText value="#{scsController.pagination.pageFirstItem + 1}..#{scsController.pagination.pageLastItem + 1}/#{scsController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{scsController.previous}" value="#{bundle.Previous} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{scsController.next}" value="#{bundle.Next} #{scsController.pagination.pageSize}" rendered="#{scsController.pagination.hasNextPage}"/>&nbsp;
+                        <p:dataTable value="#{scsController.items}" var="item"  style="border:solid 1px; width: 80%;">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListScsTitle_idSegmentController}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSegmentController}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListScsTitle_ipSegmentController}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ipSegmentController}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListScsTitle_idAddress}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idAddress}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <p:commandButton action="#{scsController.prepareView}" value="#{bundle.ListScsViewLink}"/>
+                                <!--<h:commandLink action="# {scsController.prepareView}" value="# {bundle.ListScsViewLink}"/>-->
+                                <h:outputText value=" "/>
+                                <p:commandButton action="#{scsController.prepareEdit}" value="#{bundle.ListScsEditLink}"/>
+                                <!--<h:commandLink action="# {scsController.prepareEdit}" value="# {bundle.ListScsEditLink}"/>-->
+                                <h:outputText value=" "/>
+                                <p:commandButton action="#{scsController.destroy}" value="#{bundle.ListScsDestroyLink}"/>
+                                <!--<h:commandLink action="# {scsController.destroy}" value="# {bundle.ListScsDestroyLink}"/>-->
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton action="#{scsController.prepareCreate}" value="#{bundle.ListScsCreateLink}"/>
+                    <!--<h:commandLink action="# {scsController.prepareCreate}" value="# {bundle.ListScsCreateLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ListScsIndexLink}" immediate="true"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ListScsIndexLink}"/>-->
+                </h:form>
                 
                 
             </ui:define>

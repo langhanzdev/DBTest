@@ -14,12 +14,10 @@
             </ui:define>
 
             <ui:define name="content">
-                <h1>#{bundle.ViewScsTitle}</h1>
+                <h1 style="color: #585858;">#{bundle.ViewScsTitle}</h1>
                 
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
                 <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:panelGrid columns="2">
                         <p:outputLabel value="#{bundle.ViewScsLabel_idSegmentController}"/>
                         <p:outputLabel value="#{scsController.selected.idSegmentController}" title="#{bundle.ViewScsTitle_idSegmentController}"/>
@@ -43,7 +41,7 @@
                     <!--<h:commandLink action="# {scsController.prepareList}" value="# {bundle.ViewScsShowAllLink}"/>-->
                     <br />
                     <br />
-                    <p:commandButton action="/index" value="#{bundle.ViewScsIndexLink}"/>
+                    <p:commandButton action="/index" value="#{bundle.ViewScsIndexLink}" immediate="true"/>
                     <!--<h:link outcome="/index" value="# {bundle.ViewScsIndexLink}"/>-->
 
                 </h:form>

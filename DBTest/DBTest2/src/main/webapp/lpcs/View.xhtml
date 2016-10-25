@@ -16,10 +16,8 @@
             <ui:define name="content">
                 <h1 style="color: #585858;">#{bundle.ViewLpcsTitle}</h1>
                 
-                <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
                 <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     <p:panelGrid columns="2">
                         <p:outputLabel value="#{bundle.ViewLpcsLabel_idLPC}"/>
                         <p:outputLabel value="#{lpcsController.selected.idLPC}" title="#{bundle.ViewLpcsTitle_idLPC}"/>
@@ -53,8 +51,8 @@
                     <!--<h:commandLink action="# {lpcsController.prepareList}" value="# {bundle.ViewLpcsShowAllLink}"/>-->
                     <br />
                     <br />
-                    <p:commandButton action="/index" value="#{bundle.ViewLpcsIndexLink}"/>
-                    <!--<h:link outcome="/index" value="#{bundle.ViewLpcsIndexLink}"/>-->
+                    <p:commandButton action="/index" value="#{bundle.ViewLpcsIndexLink}" immediate="true"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewLpcsIndexLink}"/>-->
 
                 </h:form>
                 

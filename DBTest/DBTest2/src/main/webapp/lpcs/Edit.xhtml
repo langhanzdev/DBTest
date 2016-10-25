@@ -17,11 +17,8 @@
             <ui:define name="content">
                 <h1 style="color: #585858;">#{bundle.EditLpcsTitle}</h1>
                 
-                
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
                 <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                     
                     <h:panelGrid columns="2">
                         <p:outputLabel value="#{bundle.EditLpcsLabel_idLPC}" for="idLPC" />
@@ -56,7 +53,7 @@
                     <!--<h:commandLink action="# {lpcsController.prepareList}" value="# {bundle.EditLpcsShowAllLink}" immediate="true"/>-->
                     <br />
                     <br />
-                    <p:commandButton action="/index" value="#{bundle.EditLpcsIndexLink}" />
+                    <p:commandButton action="/index" value="#{bundle.EditLpcsIndexLink}" immediate="true" />
                     <!--<h:link outcome="/index" value="# {bundle.EditLpcsIndexLink}" />-->
                 </h:form>
                 
