@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -13,38 +14,41 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:outputText value="#{bundle.ViewAddressesTitle}"></h:outputText>
+                <h1 style="color: #585858;">#{bundle.ViewAddressesTitle}</h1>
                 
-                <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAddressesLabel_idAddress}"/>
-                    <h:outputText value="#{addressesController.selected.idAddress}" title="#{bundle.ViewAddressesTitle_idAddress}"/>
-                    <h:outputText value="#{bundle.ViewAddressesLabel_address}"/>
-                    <h:outputText value="#{addressesController.selected.address}" title="#{bundle.ViewAddressesTitle_address}"/>
-                    <h:outputText value="#{bundle.ViewAddressesLabel_latitude}"/>
-                    <h:outputText value="#{addressesController.selected.latitude}" title="#{bundle.ViewAddressesTitle_latitude}"/>
-                    <h:outputText value="#{bundle.ViewAddressesLabel_longitude}"/>
-                    <h:outputText value="#{addressesController.selected.longitude}" title="#{bundle.ViewAddressesTitle_longitude}"/>
-                    <h:outputText value="#{bundle.ViewAddressesLabel_descriptionLocation}"/>
-                    <h:outputText value="#{addressesController.selected.descriptionLocation}" title="#{bundle.ViewAddressesTitle_descriptionLocation}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{addressesController.destroyAndView}" value="#{bundle.ViewAddressesDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAddressesEditLink}"/>
-                <br />
-                <h:commandLink action="#{addressesController.prepareCreate}" value="#{bundle.ViewAddressesCreateLink}" />
-                <br />
-                <h:commandLink action="#{addressesController.prepareList}" value="#{bundle.ViewAddressesShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAddressesIndexLink}"/>
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.ViewAddressesLabel_idAddress}"/>
+                        <p:outputLabel value="#{addressesController.selected.idAddress}" title="#{bundle.ViewAddressesTitle_idAddress}"/>
+                        <p:outputLabel value="#{bundle.ViewAddressesLabel_address}"/>
+                        <p:outputLabel value="#{addressesController.selected.address}" title="#{bundle.ViewAddressesTitle_address}"/>
+                        <p:outputLabel value="#{bundle.ViewAddressesLabel_latitude}"/>
+                        <p:outputLabel value="#{addressesController.selected.latitude}" title="#{bundle.ViewAddressesTitle_latitude}"/>
+                        <p:outputLabel value="#{bundle.ViewAddressesLabel_longitude}"/>
+                        <p:outputLabel value="#{addressesController.selected.longitude}" title="#{bundle.ViewAddressesTitle_longitude}"/>
+                        <p:outputLabel value="#{bundle.ViewAddressesLabel_descriptionLocation}"/>
+                        <p:outputLabel value="#{addressesController.selected.descriptionLocation}" title="#{bundle.ViewAddressesTitle_descriptionLocation}"/>
+                    </p:panelGrid>
+                    <br />
+                    <p:commandButton action="#{addressesController.destroyAndView}" value="#{bundle.ViewAddressesDestroyLink}"/>
+                    <!--<h:commandLink action="# {addressesController.destroyAndView}" value="# {bundle.ViewAddressesDestroyLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="Edit" value="#{bundle.ViewAddressesEditLink}" immediate="true"/> 
+                    <!--<h:link outcome="Edit" value="# {bundle.ViewAddressesEditLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{addressesController.prepareCreate}" value="#{bundle.ViewAddressesCreateLink}" />
+                    <!--<h:commandLink action="# {addressesController.prepareCreate}" value="# {bundle.ViewAddressesCreateLink}" />-->
+                    <br />
+                    <p:commandButton action="#{addressesController.prepareList}" value="#{bundle.ViewAddressesShowAllLink}"/>
+                    <!--<h:commandLink action="# {addressesController.prepareList}" value="# {bundle.ViewAddressesShowAllLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ViewAddressesIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewAddressesIndexLink}"/>-->
 
-            </h:form>
+                </h:form>
                 
                 
                 
