@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCommandHistoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_idCommandHistory}" for="idCommandHistory" />
+                    <h:inputText id="idCommandHistory" value="#{commandHistoryController.selected.idCommandHistory}" title="#{bundle.EditCommandHistoryTitle_idCommandHistory}" required="true" requiredMessage="#{bundle.EditCommandHistoryRequiredMessage_idCommandHistory}"/>
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_category}" for="category" />
+                    <h:inputText id="category" value="#{commandHistoryController.selected.category}" title="#{bundle.EditCommandHistoryTitle_category}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{commandHistoryController.selected.type}" title="#{bundle.EditCommandHistoryTitle_type}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_value}" for="value" />
+                    <h:inputText id="value" value="#{commandHistoryController.selected.value}" title="#{bundle.EditCommandHistoryTitle_value}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{commandHistoryController.selected.status}" title="#{bundle.EditCommandHistoryTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_message}" for="message" />
+                    <h:inputText id="message" value="#{commandHistoryController.selected.message}" title="#{bundle.EditCommandHistoryTitle_message}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_dateTime}" for="dateTime" />
+                    <h:inputText id="dateTime" value="#{commandHistoryController.selected.dateTime}" title="#{bundle.EditCommandHistoryTitle_dateTime}" required="true" requiredMessage="#{bundle.EditCommandHistoryRequiredMessage_dateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_idLpc}" for="idLpc" />
+                    <h:selectOneMenu id="idLpc" value="#{commandHistoryController.selected.idLpc}" title="#{bundle.EditCommandHistoryTitle_idLpc}" >
+                        <f:selectItems value="#{lpcController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCommandHistoryLabel_idSc}" for="idSc" />
+                    <h:selectOneMenu id="idSc" value="#{commandHistoryController.selected.idSc}" title="#{bundle.EditCommandHistoryTitle_idSc}" >
+                        <f:selectItems value="#{scController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{commandHistoryController.update}" value="#{bundle.EditCommandHistorySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCommandHistoryViewLink}"/>
+                <br />
+                <h:commandLink action="#{commandHistoryController.prepareList}" value="#{bundle.EditCommandHistoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCommandHistoryIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

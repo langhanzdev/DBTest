@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.ListAddressTitle}</h1>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:outputLabel escape="false" value="#{bundle.ListAddressEmpty}" rendered="#{addressController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{addressController.items.rowCount > 0}">
+                        <p:outputLabel value="#{addressController.pagination.pageFirstItem + 1}..#{addressController.pagination.pageLastItem + 1}/#{addressController.pagination.itemsCount}"/>&nbsp;
+                        <p:commandLink action="#{addressController.previous}" value="#{bundle.Previous} #{addressController.pagination.pageSize}" rendered="#{addressController.pagination.hasPreviousPage}"/>&nbsp;
+                        <p:commandLink action="#{addressController.next}" value="#{bundle.Next} #{addressController.pagination.pageSize}" rendered="#{addressController.pagination.hasNextPage}"/>&nbsp;
+                        <p:dataTable value="#{addressController.items}" var="item"  style="border:solid 1px; width: 90%;">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAddressTitle_idAddress}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idAddress}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAddressTitle_address}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.address}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAddressTitle_latitude}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.latitude}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAddressTitle_longitude}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.longitude}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAddressTitle_descriptionLocation}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descriptionLocation}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{addressController.prepareView}" value="#{bundle.ListAddressViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{addressController.prepareEdit}" value="#{bundle.ListAddressEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{addressController.destroy}" value="#{bundle.ListAddressDestroyLink}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton action="#{addressController.prepareCreate}" value="#{bundle.ListAddressCreateLink}"/>
+                    <!--<h:commandLink action="# {addressController.prepareCreate}" value="# {bundle.ListAddressCreateLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ListAddressIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ListAddressIndexLink}"/>-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

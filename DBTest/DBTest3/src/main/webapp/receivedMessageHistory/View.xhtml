@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReceivedMessageHistoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReceivedMessageHistoryLabel_idReceivedMessageHistory}"/>
+                    <h:outputText value="#{receivedMessageHistoryController.selected.idReceivedMessageHistory}" title="#{bundle.ViewReceivedMessageHistoryTitle_idReceivedMessageHistory}"/>
+                    <h:outputText value="#{bundle.ViewReceivedMessageHistoryLabel_message}"/>
+                    <h:outputText value="#{receivedMessageHistoryController.selected.message}" title="#{bundle.ViewReceivedMessageHistoryTitle_message}"/>
+                    <h:outputText value="#{bundle.ViewReceivedMessageHistoryLabel_dateTime}"/>
+                    <h:outputText value="#{receivedMessageHistoryController.selected.dateTime}" title="#{bundle.ViewReceivedMessageHistoryTitle_dateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{receivedMessageHistoryController.destroyAndView}" value="#{bundle.ViewReceivedMessageHistoryDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReceivedMessageHistoryEditLink}"/>
+                <br />
+                <h:commandLink action="#{receivedMessageHistoryController.prepareCreate}" value="#{bundle.ViewReceivedMessageHistoryCreateLink}" />
+                <br />
+                <h:commandLink action="#{receivedMessageHistoryController.prepareList}" value="#{bundle.ViewReceivedMessageHistoryShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReceivedMessageHistoryIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

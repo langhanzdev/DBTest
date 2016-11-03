@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.ListLpcTitle}</h1>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <p:outputLabel escape="false" value="#{bundle.ListLpcEmpty}" rendered="#{lpcController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{lpcController.items.rowCount > 0}">
+                        <p:outputLabel value="#{lpcController.pagination.pageFirstItem + 1}..#{lpcController.pagination.pageLastItem + 1}/#{lpcController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{lpcController.previous}" value="#{bundle.Previous} #{lpcController.pagination.pageSize}" rendered="#{lpcController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{lpcController.next}" value="#{bundle.Next} #{lpcController.pagination.pageSize}" rendered="#{lpcController.pagination.hasNextPage}"/>&nbsp;
+                        <p:dataTable value="#{lpcController.items}" var="item"  style="border:solid 1px">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_idLpc}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idLpc}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_switch1}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.switch1}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_dimmer}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dimmer}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_temperature}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.temperature}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_current}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.current}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_luminosity}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.luminosity}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_idAddress}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idAddress}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLpcTitle_idSc}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSc}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{lpcController.prepareView}" value="#{bundle.ListLpcViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{lpcController.prepareEdit}" value="#{bundle.ListLpcEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{lpcController.destroy}" value="#{bundle.ListLpcDestroyLink}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <p:commandButton action="#{lpcController.prepareCreate}" value="#{bundle.ListLpcCreateLink}"/>
+                    <!--<h:commandLink action="# {lpcController.prepareCreate}" value="# {bundle.ListLpcCreateLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ListLpcIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ListLpcIndexLink}"/>-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

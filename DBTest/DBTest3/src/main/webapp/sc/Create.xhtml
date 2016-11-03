@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.CreateScTitle}</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.CreateScLabel_idSc}" for="idSc" />
+                        <p:inputText id="idSc" value="#{scController.selected.idSc}" title="#{bundle.CreateScTitle_idSc}" required="true" requiredMessage="#{bundle.CreateScRequiredMessage_idSc}"/>
+                        <p:outputLabel value="#{bundle.CreateScLabel_ipSc}" for="ipSc" />
+                        <p:inputText id="ipSc" value="#{scController.selected.ipSc}" title="#{bundle.CreateScTitle_ipSc}" required="true" requiredMessage="#{bundle.CreateScRequiredMessage_ipSc}"/>
+                        <p:outputLabel value="#{bundle.CreateScLabel_idAddress}" for="idAddress" />
+                        <p:selectOneMenu id="idAddress" value="#{scController.selected.idAddress}"  >
+                            <f:selectItems value="#{addressController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{scController.create}" value="#{bundle.CreateScSaveLink}" />
+                    <!--<h:commandLink action="# {scController.create}" value="# {bundle.CreateScSaveLink}" />-->
+                    <br />
+                    <br />
+                    <p:commandButton action="#{scController.prepareList}" value="#{bundle.CreateScShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {scController.prepareList}" value="# {bundle.CreateScShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.CreateScIndexLink}" immediate="true"/>
+                    <!--<h:link outcome="/index" value="# {bundle.CreateScIndexLink}"/>-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

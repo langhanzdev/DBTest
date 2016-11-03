@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.CreateLpcTitle}</h1>
+                <h:form>
+                    
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2">
+                        
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_switch1}" for="switch1" />
+                        <p:inputText id="switch1" value="#{lpcController.selected.switch1}" title="#{bundle.CreateLpcTitle_switch1}" />
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_dimmer}" for="dimmer" />
+                        <p:inputText id="dimmer" value="#{lpcController.selected.dimmer}" title="#{bundle.CreateLpcTitle_dimmer}" />
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_temperature}" for="temperature" />
+                        <p:inputText id="temperature" value="#{lpcController.selected.temperature}" title="#{bundle.CreateLpcTitle_temperature}" />
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_current}" for="current" />
+                        <p:inputText id="current" value="#{lpcController.selected.current}" title="#{bundle.CreateLpcTitle_current}" />
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_luminosity}" for="luminosity" />
+                        <p:inputText id="luminosity" value="#{lpcController.selected.luminosity}" title="#{bundle.CreateLpcTitle_luminosity}" />
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_idAddress}" for="idAddress" />
+                        <p:selectOneMenu id="idAddress" value="#{lpcController.selected.idAddress}" >
+                            <f:selectItems value="#{addressController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLpcLabel_idSc}" for="idSc" />
+                        <p:selectOneMenu id="idSc" value="#{lpcController.selected.idSc}"  required="true" requiredMessage="#{bundle.CreateLpcRequiredMessage_idSc}">
+                            <f:selectItems value="#{scController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{lpcController.create}" value="#{bundle.CreateLpcSaveLink}" />
+                    <!--<h:commandLink action="# {lpcController.create}" value="# {bundle.CreateLpcSaveLink}" />-->
+                    <br />
+                    <br />
+                    <p:commandButton action="#{lpcController.prepareList}" value="#{bundle.CreateLpcShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {lpcController.prepareList}" value="# {bundle.CreateLpcShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.CreateLpcIndexLink}" immediate="true"/>
+                    <!--<h:link outcome="/index" value="# {bundle.CreateLpcIndexLink}"/>-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

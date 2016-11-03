@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLpcHistoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLpcHistoryEmpty}" rendered="#{lpcHistoryController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{lpcHistoryController.items.rowCount > 0}">
+                    <h:outputText value="#{lpcHistoryController.pagination.pageFirstItem + 1}..#{lpcHistoryController.pagination.pageLastItem + 1}/#{lpcHistoryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{lpcHistoryController.previous}" value="#{bundle.Previous} #{lpcHistoryController.pagination.pageSize}" rendered="#{lpcHistoryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{lpcHistoryController.next}" value="#{bundle.Next} #{lpcHistoryController.pagination.pageSize}" rendered="#{lpcHistoryController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{lpcHistoryController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_idLpcHistory}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLpcHistory}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_switch1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.switch1}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_dimmer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dimmer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_temperature}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temperature}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_current}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.current}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_luminosity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.luminosity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_dateTime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateTime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcHistoryTitle_idLpc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLpc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{lpcHistoryController.prepareView}" value="#{bundle.ListLpcHistoryViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lpcHistoryController.prepareEdit}" value="#{bundle.ListLpcHistoryEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lpcHistoryController.destroy}" value="#{bundle.ListLpcHistoryDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{lpcHistoryController.prepareCreate}" value="#{bundle.ListLpcHistoryCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLpcHistoryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
