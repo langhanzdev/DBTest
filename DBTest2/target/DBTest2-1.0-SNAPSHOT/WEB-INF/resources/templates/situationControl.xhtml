@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/custom.css"/>
+        <h:outputStylesheet name="css/joint.min.css" />
+        <h:outputStylesheet name="css/joint.ui.paperScroller.css" />
+
+        
+<!--        <h:outputScript name="js/jquery.min.js"/>
+        <h:outputScript name="js/lodash.min.js"/>
+        <h:outputScript name="js/backbone-min.js"/>
+        <h:outputScript name="js/tcm.js"/>
+        <h:outputScript name="js/joint.min.js"/>
+        <h:outputScript name="js/joint.shapes.erd.min.js"/>
+        <h:outputScript name="js/joint.ui.paperScroller.js"/> -->
+
+        <title>Situation Control</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <!-- Top Bar Menu -->
+            <h:form style="width: 100%;"   prependId="false">  
+                <p:growl id="messages" showDetail="true" sticky="true" life="3000"/>  
+                <p:menubar >
+                    <p:menuitem value="Situation Control" url="./index.xhtml" icon="ui-icon-home" />
+                    <p:menuitem value="Control Panel" url="./controlPanel.xhtml" icon="ui-icon-signal" />
+                    <f:facet name="options">
+<!--                        <h:graphicImage id="logoH" style="height: 25px;margin-bottom: 0; margin-top: 2px;margin-right: 600px;" name="img/HuaweiLogo.png"/> 
+                        <h:graphicImage id="loader" style="display: none;height: 19px;padding-bottom: 6px;margin-bottom: 0; margin-top: 2px;margin-right: 615px;" name="./img/HuaweiLoader.gif"/> -->
+                        <p:inputText style="margin-right:10px" placeholder="Search"/>
+                        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" /> 
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+            <ui:insert name="top"></ui:insert>
+        </div>
+        
+<!--         <h:outputScript name="js/jquery.min.js"/>
+         <h:outputScript name="js/lodash.min.js"/>
+         <h:outputScript name="js/backbone-min.js"/>
+         <h:outputScript name="js/tcm.js"/>
+         <h:outputScript name="js/joint.min.js"/>
+         <h:outputScript name="js/joint.shapes.erd.min.js"/>
+         <h:outputScript name="js/joint.ui.paperScroller.js"/> -->
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+
+        <div id="bottom">
+            <!-- Footer -->
+            <div id="foot">
+                © 2016 Huawei-PUCRS Smart City Innovation Center - All Rights Reserved
+            </div>
+            <ui:insert name="bottom"></ui:insert>
+        </div>
+        
+       
+        
+        
+    </h:body>
+
+</html>

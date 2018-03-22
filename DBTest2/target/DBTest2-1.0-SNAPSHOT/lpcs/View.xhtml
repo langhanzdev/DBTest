@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.ViewLpcsTitle}</h1>
+                
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_idLPC}"/>
+                        <p:outputLabel value="#{lpcsController.selected.idLPC}" title="#{bundle.ViewLpcsTitle_idLPC}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_swicth}"/>
+                        <p:outputLabel value="#{lpcsController.selected.swicth}" title="#{bundle.ViewLpcsTitle_swicth}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_dimmer}"/>
+                        <p:outputLabel value="#{lpcsController.selected.dimmer}" title="#{bundle.ViewLpcsTitle_dimmer}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_temperature}"/>
+                        <p:outputLabel value="#{lpcsController.selected.temperature}" title="#{bundle.ViewLpcsTitle_temperature}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_current}"/>
+                        <p:outputLabel value="#{lpcsController.selected.current}" title="#{bundle.ViewLpcsTitle_current}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_luminosity}"/>
+                        <p:outputLabel value="#{lpcsController.selected.luminosity}" title="#{bundle.ViewLpcsTitle_luminosity}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_address}"/>
+                        <p:outputLabel value="#{lpcsController.selected.address}" title="#{bundle.ViewLpcsTitle_address}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcsLabel_sc}"/>
+                        <p:outputLabel value="#{lpcsController.selected.sc}" title="#{bundle.ViewLpcsTitle_sc}"/>
+                    </p:panelGrid>
+                    <br />
+                    <p:commandButton action="#{lpcsController.destroyAndView}" value="#{bundle.ViewLpcsDestroyLink}"/>
+                    <!--<h:commandLink action="# {lpcsController.destroyAndView}" value="# {bundle.ViewLpcsDestroyLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="Edit" value="#{bundle.ViewLpcsEditLink}"/>
+                    <!--<h:link outcome="Edit" value="# {bundle.ViewLpcsEditLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{lpcsController.prepareCreate}" value="#{bundle.ViewLpcsCreateLink}" />
+                    <!--<h:commandLink action="# {lpcsController.prepareCreate}" value="# {bundle.ViewLpcsCreateLink}" />-->
+                    <br />
+                    <p:commandButton action="#{lpcsController.prepareList}" value="#{bundle.ViewLpcsShowAllLink}"/>
+                    <!--<h:commandLink action="# {lpcsController.prepareList}" value="# {bundle.ViewLpcsShowAllLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ViewLpcsIndexLink}" immediate="true"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewLpcsIndexLink}"/>-->
+
+                </h:form>
+                
+                
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

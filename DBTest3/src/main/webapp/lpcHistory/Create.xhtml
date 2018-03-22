@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLpcHistoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_idLpcHistory}" for="idLpcHistory" />
+                    <h:inputText id="idLpcHistory" value="#{lpcHistoryController.selected.idLpcHistory}" title="#{bundle.CreateLpcHistoryTitle_idLpcHistory}" required="true" requiredMessage="#{bundle.CreateLpcHistoryRequiredMessage_idLpcHistory}"/>
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_switch1}" for="switch1" />
+                    <h:inputText id="switch1" value="#{lpcHistoryController.selected.switch1}" title="#{bundle.CreateLpcHistoryTitle_switch1}" />
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_dimmer}" for="dimmer" />
+                    <h:inputText id="dimmer" value="#{lpcHistoryController.selected.dimmer}" title="#{bundle.CreateLpcHistoryTitle_dimmer}" />
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_temperature}" for="temperature" />
+                    <h:inputText id="temperature" value="#{lpcHistoryController.selected.temperature}" title="#{bundle.CreateLpcHistoryTitle_temperature}" />
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_current}" for="current" />
+                    <h:inputText id="current" value="#{lpcHistoryController.selected.current}" title="#{bundle.CreateLpcHistoryTitle_current}" />
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_luminosity}" for="luminosity" />
+                    <h:inputText id="luminosity" value="#{lpcHistoryController.selected.luminosity}" title="#{bundle.CreateLpcHistoryTitle_luminosity}" />
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_dateTime}" for="dateTime" />
+                    <h:inputText id="dateTime" value="#{lpcHistoryController.selected.dateTime}" title="#{bundle.CreateLpcHistoryTitle_dateTime}" required="true" requiredMessage="#{bundle.CreateLpcHistoryRequiredMessage_dateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateLpcHistoryLabel_idLpc}" for="idLpc" />
+                    <h:selectOneMenu id="idLpc" value="#{lpcHistoryController.selected.idLpc}" title="#{bundle.CreateLpcHistoryTitle_idLpc}" required="true" requiredMessage="#{bundle.CreateLpcHistoryRequiredMessage_idLpc}">
+                        <f:selectItems value="#{lpcController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{lpcHistoryController.create}" value="#{bundle.CreateLpcHistorySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{lpcHistoryController.prepareList}" value="#{bundle.CreateLpcHistoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLpcHistoryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

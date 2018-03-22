@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAddressTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAddressLabel_idAddress}" for="idAddress" />
+                    <h:inputText id="idAddress" value="#{addressController.selected.idAddress}" title="#{bundle.EditAddressTitle_idAddress}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_idAddress}"/>
+                    <h:outputLabel value="#{bundle.EditAddressLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{addressController.selected.address}" title="#{bundle.EditAddressTitle_address}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_address}"/>
+                    <h:outputLabel value="#{bundle.EditAddressLabel_latitude}" for="latitude" />
+                    <h:inputText id="latitude" value="#{addressController.selected.latitude}" title="#{bundle.EditAddressTitle_latitude}" />
+                    <h:outputLabel value="#{bundle.EditAddressLabel_longitude}" for="longitude" />
+                    <h:inputText id="longitude" value="#{addressController.selected.longitude}" title="#{bundle.EditAddressTitle_longitude}" />
+                    <h:outputLabel value="#{bundle.EditAddressLabel_descriptionLocation}" for="descriptionLocation" />
+                    <h:inputText id="descriptionLocation" value="#{addressController.selected.descriptionLocation}" title="#{bundle.EditAddressTitle_descriptionLocation}" />
+                </h:panelGrid>
+                <h:commandLink action="#{addressController.update}" value="#{bundle.EditAddressSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAddressViewLink}"/>
+                <br />
+                <h:commandLink action="#{addressController.prepareList}" value="#{bundle.EditAddressShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAddressIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReceivedMessageHistoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReceivedMessageHistoryLabel_idReceivedMessageHistory}" for="idReceivedMessageHistory" />
+                    <h:inputText id="idReceivedMessageHistory" value="#{receivedMessageHistoryController.selected.idReceivedMessageHistory}" title="#{bundle.EditReceivedMessageHistoryTitle_idReceivedMessageHistory}" required="true" requiredMessage="#{bundle.EditReceivedMessageHistoryRequiredMessage_idReceivedMessageHistory}"/>
+                    <h:outputLabel value="#{bundle.EditReceivedMessageHistoryLabel_message}" for="message" />
+                    <h:inputText id="message" value="#{receivedMessageHistoryController.selected.message}" title="#{bundle.EditReceivedMessageHistoryTitle_message}" required="true" requiredMessage="#{bundle.EditReceivedMessageHistoryRequiredMessage_message}"/>
+                    <h:outputLabel value="#{bundle.EditReceivedMessageHistoryLabel_dateTime}" for="dateTime" />
+                    <h:inputText id="dateTime" value="#{receivedMessageHistoryController.selected.dateTime}" title="#{bundle.EditReceivedMessageHistoryTitle_dateTime}" required="true" requiredMessage="#{bundle.EditReceivedMessageHistoryRequiredMessage_dateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{receivedMessageHistoryController.update}" value="#{bundle.EditReceivedMessageHistorySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReceivedMessageHistoryViewLink}"/>
+                <br />
+                <h:commandLink action="#{receivedMessageHistoryController.prepareList}" value="#{bundle.EditReceivedMessageHistoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReceivedMessageHistoryIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

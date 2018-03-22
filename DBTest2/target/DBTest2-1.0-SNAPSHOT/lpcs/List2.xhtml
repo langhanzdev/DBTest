@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLpcsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLpcsEmpty}" rendered="#{lpcsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{lpcsController.items.rowCount > 0}">
+                    <h:outputText value="#{lpcsController.pagination.pageFirstItem + 1}..#{lpcsController.pagination.pageLastItem + 1}/#{lpcsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{lpcsController.previous}" value="#{bundle.Previous} #{lpcsController.pagination.pageSize}" rendered="#{lpcsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{lpcsController.next}" value="#{bundle.Next} #{lpcsController.pagination.pageSize}" rendered="#{lpcsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{lpcsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_idLPC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLPC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_swicth}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.swicth}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_dimmer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dimmer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_temperature}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temperature}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_current}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.current}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_luminosity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.luminosity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_address}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLpcsTitle_sc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{lpcsController.prepareView}" value="#{bundle.ListLpcsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lpcsController.prepareEdit}" value="#{bundle.ListLpcsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{lpcsController.destroy}" value="#{bundle.ListLpcsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{lpcsController.prepareCreate}" value="#{bundle.ListLpcsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLpcsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

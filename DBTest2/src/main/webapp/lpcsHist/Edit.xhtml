@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLpcsHistTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_idLpcHist}" for="idLpcHist" />
+                    <h:inputText id="idLpcHist" value="#{lpcsHistController.selected.idLpcHist}" title="#{bundle.EditLpcsHistTitle_idLpcHist}" required="true" requiredMessage="#{bundle.EditLpcsHistRequiredMessage_idLpcHist}"/>
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_switch1}" for="switch1" />
+                    <h:inputText id="switch1" value="#{lpcsHistController.selected.switch1}" title="#{bundle.EditLpcsHistTitle_switch1}" />
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_dimmer}" for="dimmer" />
+                    <h:inputText id="dimmer" value="#{lpcsHistController.selected.dimmer}" title="#{bundle.EditLpcsHistTitle_dimmer}" />
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_temperature}" for="temperature" />
+                    <h:inputText id="temperature" value="#{lpcsHistController.selected.temperature}" title="#{bundle.EditLpcsHistTitle_temperature}" />
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_current}" for="current" />
+                    <h:inputText id="current" value="#{lpcsHistController.selected.current}" title="#{bundle.EditLpcsHistTitle_current}" />
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_luminosity}" for="luminosity" />
+                    <h:inputText id="luminosity" value="#{lpcsHistController.selected.luminosity}" title="#{bundle.EditLpcsHistTitle_luminosity}" />
+                    <h:outputLabel value="#{bundle.EditLpcsHistLabel_lpc}" for="lpc" />
+                    <h:selectOneMenu id="lpc" value="#{lpcsHistController.selected.lpc}" title="#{bundle.EditLpcsHistTitle_lpc}" required="true" requiredMessage="#{bundle.EditLpcsHistRequiredMessage_lpc}">
+                        <f:selectItems value="#{lpcsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{lpcsHistController.update}" value="#{bundle.EditLpcsHistSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLpcsHistViewLink}"/>
+                <br />
+                <h:commandLink action="#{lpcsHistController.prepareList}" value="#{bundle.EditLpcsHistShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLpcsHistIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

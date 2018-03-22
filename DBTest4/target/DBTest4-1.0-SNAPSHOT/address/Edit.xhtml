@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.EditAddressTitle}</h1>
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.EditAddressLabel_idAddress}" for="idAddress" />
+                        <p:inputText id="idAddress" value="#{addressController.selected.idAddress}" title="#{bundle.EditAddressTitle_idAddress}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_idAddress}" disabled="true"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{addressController.selected.address}" title="#{bundle.EditAddressTitle_address}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_address}"/>
+                        <p:outputLabel value="#{bundle.EditAddressLabel_latitude}" for="latitude" />
+                        <p:inputText id="latitude" value="#{addressController.selected.latitude}" title="#{bundle.EditAddressTitle_latitude}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_longitude}" for="longitude" />
+                        <p:inputText id="longitude" value="#{addressController.selected.longitude}" title="#{bundle.EditAddressTitle_longitude}" />
+                        <p:outputLabel value="#{bundle.EditAddressLabel_descriptionLocation}" for="descriptionLocation" />
+                        <p:inputText id="descriptionLocation" value="#{addressController.selected.descriptionLocation}" title="#{bundle.EditAddressTitle_descriptionLocation}" />
+                    </h:panelGrid>
+                    <p:commandButton action="#{addressController.update}" value="#{bundle.EditAddressSaveLink}"/>
+                    <!--<h:commandLink action="# {addressController.update}" value="# {bundle.EditAddressSaveLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="View" value="#{bundle.EditAddressViewLink}"/>
+                    <!--<h:link outcome="View" value="# {bundle.EditAddressViewLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{addressController.prepareList}" value="#{bundle.EditAddressShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {addressController.prepareList}" value="# {bundle.EditAddressShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.EditAddressIndexLink}" immediate="true" />
+                    <!--<h:link outcome="/index" value="# {bundle.EditAddressIndexLink}" />-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

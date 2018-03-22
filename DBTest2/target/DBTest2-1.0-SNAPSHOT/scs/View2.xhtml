@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewScsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewScsLabel_idSegmentController}"/>
+                    <h:outputText value="#{scsController.selected.idSegmentController}" title="#{bundle.ViewScsTitle_idSegmentController}"/>
+                    <h:outputText value="#{bundle.ViewScsLabel_ipSegmentController}"/>
+                    <h:outputText value="#{scsController.selected.ipSegmentController}" title="#{bundle.ViewScsTitle_ipSegmentController}"/>
+                    <h:outputText value="#{bundle.ViewScsLabel_idAddress}"/>
+                    <h:outputText value="#{scsController.selected.idAddress}" title="#{bundle.ViewScsTitle_idAddress}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{scsController.destroyAndView}" value="#{bundle.ViewScsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewScsEditLink}"/>
+                <br />
+                <h:commandLink action="#{scsController.prepareCreate}" value="#{bundle.ViewScsCreateLink}" />
+                <br />
+                <h:commandLink action="#{scsController.prepareList}" value="#{bundle.ViewScsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewScsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

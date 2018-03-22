@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.EditScTitle}</h1>
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.EditScLabel_idSc}" for="idSc" />
+                        <p:inputText id="idSc" value="#{scController.selected.idSc}" title="#{bundle.EditScTitle_idSc}" required="true" requiredMessage="#{bundle.EditScRequiredMessage_idSc}" disabled="true"/>
+                        <p:outputLabel value="#{bundle.EditScLabel_ipSc}" for="ipSc" />
+                        <p:inputText id="ipSc" value="#{scController.selected.ipSc}" title="#{bundle.EditScTitle_ipSc}" required="true" requiredMessage="#{bundle.EditScRequiredMessage_ipSc}"/>
+                        <p:outputLabel value="#{bundle.EditScLabel_idAddress}" for="idAddress" />
+                        <p:selectOneMenu id="idAddress" value="#{scController.selected.idAddress}"  >
+                            <f:selectItems value="#{addressController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <p:commandButton action="#{scController.update}" value="#{bundle.EditScSaveLink}"/>
+                    <!--<h:commandLink action="# {scController.update}" value="# {bundle.EditScSaveLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="View" value="#{bundle.EditScViewLink}"/>
+                    <!--<h:link outcome="View" value="# {bundle.EditScViewLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{scController.prepareList}" value="#{bundle.EditScShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {scController.prepareList}" value="# {bundle.EditScShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.EditScIndexLink}" />
+                    <!--<h:link outcome="/index" value="# {bundle.EditScIndexLink}" />-->
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

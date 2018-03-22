@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.CreateAddressesTitle}</h1>
+                
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2">
+                        
+                        <p:outputLabel value="#{bundle.CreateAddressesLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{addressesController.selected.address}" title="#{bundle.CreateAddressesTitle_address}" required="true" requiredMessage="#{bundle.CreateAddressesRequiredMessage_address}"/>
+                        <p:outputLabel value="#{bundle.CreateAddressesLabel_latitude}" for="latitude" />
+                        <p:inputText id="latitude" value="#{addressesController.selected.latitude}" title="#{bundle.CreateAddressesTitle_latitude}" />
+                        <p:outputLabel value="#{bundle.CreateAddressesLabel_longitude}" for="longitude" />
+                        <p:inputText id="longitude" value="#{addressesController.selected.longitude}" title="#{bundle.CreateAddressesTitle_longitude}" />
+                        <p:outputLabel value="#{bundle.CreateAddressesLabel_descriptionLocation}" for="descriptionLocation" />
+                        <p:inputText id="descriptionLocation" value="#{addressesController.selected.descriptionLocation}" title="#{bundle.CreateAddressesTitle_descriptionLocation}" />
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton action="#{addressesController.create}" value="#{bundle.CreateAddressesSaveLink}" />
+                    <!--<h:commandLink action="# {addressesController.create}" value="# {bundle.CreateAddressesSaveLink}" />-->
+                    <br />
+                    <br />
+                    <p:commandButton action="#{addressesController.prepareList}" value="#{bundle.CreateAddressesShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {addressesController.prepareList}" value="# {bundle.CreateAddressesShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.CreateAddressesIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.CreateAddressesIndexLink}"/>-->
+                </h:form>
+                
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

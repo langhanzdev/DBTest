@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.ViewScTitle}</h1>
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.ViewScLabel_idSc}"/>
+                        <p:outputLabel value="#{scController.selected.idSc}" title="#{bundle.ViewScTitle_idSc}"/>
+                        <p:outputLabel value="#{bundle.ViewScLabel_ipSc}"/>
+                        <p:outputLabel value="#{scController.selected.ipSc}" title="#{bundle.ViewScTitle_ipSc}"/>
+                        <p:outputLabel value="#{bundle.ViewScLabel_idAddress}"/>
+                        <p:outputLabel value="#{scController.selected.idAddress}" title="#{bundle.ViewScTitle_idAddress}"/>
+                    </p:panelGrid>
+                    <br />
+                    <p:commandButton action="#{scController.destroyAndView}" value="#{bundle.ViewScDestroyLink}"/>
+                    <!--<h:commandLink action="# {scController.destroyAndView}" value="# {bundle.ViewScDestroyLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="Edit" value="#{bundle.ViewScEditLink}" immediate="true"/>
+                    <!--<h:link outcome="Edit" value="# {bundle.ViewScEditLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{scController.prepareCreate}" value="#{bundle.ViewScCreateLink}" />
+                    <!--<h:commandLink action="# {scController.prepareCreate}" value="# {bundle.ViewScCreateLink}" />-->
+                    <br />
+                    <p:commandButton action="#{scController.prepareList}" value="#{bundle.ViewScShowAllLink}"/>
+                    <!--<h:commandLink action="# {scController.prepareList}" value="# {bundle.ViewScShowAllLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ViewScIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewScIndexLink}"/>-->
+
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

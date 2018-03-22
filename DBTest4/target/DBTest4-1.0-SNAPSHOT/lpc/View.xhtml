@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.ViewLpcTitle}</h1>
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_idLpc}"/>
+                        <p:outputLabel value="#{lpcController.selected.idLpc}" title="#{bundle.ViewLpcTitle_idLpc}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_switch1}"/>
+                        <p:outputLabel value="#{lpcController.selected.switch1}" title="#{bundle.ViewLpcTitle_switch1}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_dimmer}"/>
+                        <p:outputLabel value="#{lpcController.selected.dimmer}" title="#{bundle.ViewLpcTitle_dimmer}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_temperature}"/>
+                        <p:outputLabel value="#{lpcController.selected.temperature}" title="#{bundle.ViewLpcTitle_temperature}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_current}"/>
+                        <p:outputLabel value="#{lpcController.selected.current}" title="#{bundle.ViewLpcTitle_current}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_luminosity}"/>
+                        <p:outputLabel value="#{lpcController.selected.luminosity}" title="#{bundle.ViewLpcTitle_luminosity}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_idAddress}"/>
+                        <p:outputLabel value="#{lpcController.selected.idAddress}" title="#{bundle.ViewLpcTitle_idAddress}"/>
+                        <p:outputLabel value="#{bundle.ViewLpcLabel_idSc}"/>
+                        <p:outputLabel value="#{lpcController.selected.idSc}" title="#{bundle.ViewLpcTitle_idSc}"/>
+                    </p:panelGrid>
+                    <br />
+                    <p:commandButton action="#{lpcController.destroyAndView}" value="#{bundle.ViewLpcDestroyLink}"/>
+                    <!--<h:commandLink action="# {lpcController.destroyAndView}" value="# {bundle.ViewLpcDestroyLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="Edit" value="#{bundle.ViewLpcEditLink}"/>
+                    <!--<h:link outcome="Edit" value="# {bundle.ViewLpcEditLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{lpcController.prepareCreate}" value="#{bundle.ViewLpcCreateLink}" />
+                    <!--<h:commandLink action="# {lpcController.prepareCreate}" value="# {bundle.ViewLpcCreateLink}" />-->
+                    <br />
+                    <p:commandButton action="#{lpcController.prepareList}" value="#{bundle.ViewLpcShowAllLink}"/>
+                    <!--<h:commandLink action="# {lpcController.prepareList}" value="# {bundle.ViewLpcShowAllLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.ViewLpcIndexLink}"/>
+                    <!--<h:link outcome="/index" value="# {bundle.ViewLpcIndexLink}"/>-->
+
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

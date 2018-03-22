@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="../WEB-INF/resources/templates/situationControl.xhtml">
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h1 style="color: #585858;">#{bundle.EditLpcsTitle}</h1>
+                
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_idLPC}" for="idLPC" />
+                        <p:inputText disabled="true" id="idLPC" value="#{lpcsController.selected.idLPC}" title="#{bundle.EditLpcsTitle_idLPC}" required="true" requiredMessage="#{bundle.EditLpcsRequiredMessage_idLPC}"/>
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_swicth}" for="swicth" />
+                        <p:inputText id="swicth" value="#{lpcsController.selected.swicth}" title="#{bundle.EditLpcsTitle_swicth}" />
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_dimmer}" for="dimmer" />
+                        <p:inputText id="dimmer" value="#{lpcsController.selected.dimmer}" title="#{bundle.EditLpcsTitle_dimmer}" />
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_temperature}" for="temperature" />
+                        <p:inputText id="temperature" value="#{lpcsController.selected.temperature}" title="#{bundle.EditLpcsTitle_temperature}" />
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_current}" for="current" />
+                        <p:inputText id="current" value="#{lpcsController.selected.current}" title="#{bundle.EditLpcsTitle_current}" />
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_luminosity}" for="luminosity" />
+                        <p:inputText id="luminosity" value="#{lpcsController.selected.luminosity}" title="#{bundle.EditLpcsTitle_luminosity}" />
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_address}" for="address" />
+                        <p:selectOneMenu id="address" value="#{lpcsController.selected.address}"  >
+                            <f:selectItems value="#{addressesController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLpcsLabel_sc}" for="sc" />
+                        <p:selectOneMenu id="sc" value="#{lpcsController.selected.sc}"  >
+                            <f:selectItems value="#{scsController.itemsAvailableSelectOne}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <p:commandButton action="#{lpcsController.update}" value="#{bundle.EditLpcsSaveLink}"/>
+                    <!--<h:commandLink action="# {lpcsController.update}" value="# {bundle.EditLpcsSaveLink}"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="View" value="#{bundle.EditLpcsViewLink}"/>
+                    <!--<h:link outcome="View" value="# {bundle.EditLpcsViewLink}"/>-->
+                    <br />
+                    <p:commandButton action="#{lpcsController.prepareList}" value="#{bundle.EditLpcsShowAllLink}" immediate="true"/>
+                    <!--<h:commandLink action="# {lpcsController.prepareList}" value="# {bundle.EditLpcsShowAllLink}" immediate="true"/>-->
+                    <br />
+                    <br />
+                    <p:commandButton action="/index" value="#{bundle.EditLpcsIndexLink}" immediate="true" />
+                    <!--<h:link outcome="/index" value="# {bundle.EditLpcsIndexLink}" />-->
+                </h:form>
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

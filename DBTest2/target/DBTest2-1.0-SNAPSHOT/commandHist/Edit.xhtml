@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCommandHistTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_idCommandHist}" for="idCommandHist" />
+                    <h:inputText id="idCommandHist" value="#{commandHistController.selected.idCommandHist}" title="#{bundle.EditCommandHistTitle_idCommandHist}" required="true" requiredMessage="#{bundle.EditCommandHistRequiredMessage_idCommandHist}"/>
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_category}" for="category" />
+                    <h:inputText id="category" value="#{commandHistController.selected.category}" title="#{bundle.EditCommandHistTitle_category}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{commandHistController.selected.type}" title="#{bundle.EditCommandHistTitle_type}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_value}" for="value" />
+                    <h:inputText id="value" value="#{commandHistController.selected.value}" title="#{bundle.EditCommandHistTitle_value}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{commandHistController.selected.status}" title="#{bundle.EditCommandHistTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_message}" for="message" />
+                    <h:inputText id="message" value="#{commandHistController.selected.message}" title="#{bundle.EditCommandHistTitle_message}" />
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_dateTime}" for="dateTime" />
+                    <h:inputText id="dateTime" value="#{commandHistController.selected.dateTime}" title="#{bundle.EditCommandHistTitle_dateTime}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_lpc}" for="lpc" />
+                    <h:selectOneMenu id="lpc" value="#{commandHistController.selected.lpc}" title="#{bundle.EditCommandHistTitle_lpc}" >
+                        <f:selectItems value="#{lpcsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCommandHistLabel_sc}" for="sc" />
+                    <h:selectOneMenu id="sc" value="#{commandHistController.selected.sc}" title="#{bundle.EditCommandHistTitle_sc}" >
+                        <f:selectItems value="#{scsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{commandHistController.update}" value="#{bundle.EditCommandHistSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCommandHistViewLink}"/>
+                <br />
+                <h:commandLink action="#{commandHistController.prepareList}" value="#{bundle.EditCommandHistShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCommandHistIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

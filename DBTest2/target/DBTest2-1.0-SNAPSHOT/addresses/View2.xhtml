@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAddressesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAddressesLabel_idAddress}"/>
+                    <h:outputText value="#{addressesController.selected.idAddress}" title="#{bundle.ViewAddressesTitle_idAddress}"/>
+                    <h:outputText value="#{bundle.ViewAddressesLabel_address}"/>
+                    <h:outputText value="#{addressesController.selected.address}" title="#{bundle.ViewAddressesTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewAddressesLabel_latitude}"/>
+                    <h:outputText value="#{addressesController.selected.latitude}" title="#{bundle.ViewAddressesTitle_latitude}"/>
+                    <h:outputText value="#{bundle.ViewAddressesLabel_longitude}"/>
+                    <h:outputText value="#{addressesController.selected.longitude}" title="#{bundle.ViewAddressesTitle_longitude}"/>
+                    <h:outputText value="#{bundle.ViewAddressesLabel_descriptionLocation}"/>
+                    <h:outputText value="#{addressesController.selected.descriptionLocation}" title="#{bundle.ViewAddressesTitle_descriptionLocation}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{addressesController.destroyAndView}" value="#{bundle.ViewAddressesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAddressesEditLink}"/>
+                <br />
+                <h:commandLink action="#{addressesController.prepareCreate}" value="#{bundle.ViewAddressesCreateLink}" />
+                <br />
+                <h:commandLink action="#{addressesController.prepareList}" value="#{bundle.ViewAddressesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAddressesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
